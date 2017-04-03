@@ -3,13 +3,20 @@ const React = require('react');
 const Pet = require('./Pet');
 
 class PetBrowser extends React.Component {
-  render() {
-    return (
-      <div className="ui cards">
-        <code>&lt;Pet /&gt;</code> &nbsp; components should go here
-      </div>
-    );
-  }
-}
+	constructor() {
+		super();
+	}
 
-module.exports = PetBrowser;
+	render() {
+		const pets = this.props.pets.map((p) => {
+			return (<Pet pet={p} onAdoptPet={this.props.onAdoptPet} isAdopted={this.props.adoptedPets.includes(p.id)} />)
+		});
+		return (
+			<div className="ui cards">
+				{pets}
+			</div>
+			);
+		}
+	}
+
+	module.exports = PetBrowser;
