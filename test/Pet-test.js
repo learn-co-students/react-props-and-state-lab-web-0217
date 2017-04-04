@@ -29,6 +29,7 @@ describe('<Pet />', function () {
   describe('Rendering props', function () {
     it('should render the name', function () {
       const wrapper = shallow(<Pet pet={MALE_DOG} />);
+      console.log(wrapper.text())
       expect(wrapper.text().includes(MALE_DOG.name)).toBeTruthy();
     });
 

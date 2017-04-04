@@ -11,6 +11,7 @@ describe('<App />', function () {
   describe('Filters', function () {
     it('should change filter type', function () {
       const wrapper = shallow(<App />);
+      console.log(wrapper.find(Filters).props())
       wrapper.find(Filters).props().onChangeType('micropig');
       expect(wrapper.state().filters.type).toEqual('micropig');
     });

@@ -2,7 +2,7 @@
 
 ## Overview
 
-You'll build a small React application where you'll update state in response to an XHR payload and pass props among components to handle updates. 
+You'll build a small React application where you'll update state in response to an XHR payload and pass props among components to handle updates.
 
 ## Animal Shelter
 ![Best Friends](https://media.giphy.com/media/xTiTnz5OOUn49wKbg4/giphy.gif)
@@ -44,3 +44,10 @@ There are several components that need your attention. All of these components c
 
 - [Forms](https://facebook.github.io/react/docs/forms.html)
 - [Events](https://facebook.github.io/react/docs/events.html)
+
+kate@flatironschool.com
+jonus@flatironschool.com
+balance between learn/do (need to deliver)
+strict peer programming?
+
+pundit

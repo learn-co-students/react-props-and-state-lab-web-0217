@@ -1,11 +1,10 @@
-const React = require('react');
-
-const Filters = require('./Filters');
-const PetBrowser = require('./PetBrowser');
+const React = require('react')
+const Filters = require('./Filters')
+const PetBrowser = require('./PetBrowser')
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super()
 
     this.state = {
       pets: [],
@@ -13,7 +12,37 @@ class App extends React.Component {
       filters: {
         type: 'all',
       }
-    };
+    }
+    this.rootApiURL = '/api/pets'
+    this.handleFilterTypeChange = this.handleFilterTypeChange.bind(this)
+    this.handleAdoptPet = this.handleAdoptPet.bind(this)
+    this.handleFindPets = this.handleFindPets.bind(this)
+  }
+
+
+  handleFindPets() {
+    let url = (this.state.filters.type === 'all') ? this.rootApiURL : `${this.rootApiURL}?type=${this.state.filters.type}`
+    fetch(url)
+      .then((data) => {
+        return data.json()
+      })
+      .then((petsData) => {
+        this.setState({ petsData })
+      })
+  }
+
+  handleFilterTypeChange(newType) {
+    this.setState({
+      filters: Object.assign({}, this.state.filters, {
+        type: newType,
+      })
+    })
+  }
+
+  handleAdoptPet(id) {
+    this.setState({
+      adoptedPets: this.state.adoptedPets.concat(id)
+    })
   }
 
   render() {
@@ -25,16 +54,19 @@ class App extends React.Component {
         <div className="ui container">
           <div className="ui grid">
             <div className="four wide column">
-              <Filters />
+              <Filters filters={this.state.filters}
+                       onChangeType={this.handleFilterTypeChange}
+                       onFindPetsClick={this.handleFindPets}
+              />
             </div>
             <div className="twelve wide column">
-              <PetBrowser />
+              <PetBrowser pets={this.state.pets} adoptedPets={this.state.adoptedPets} onAdoptPet={this.handleAdoptPet} />
             </div>
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-module.exports = App;
+module.exports = App
