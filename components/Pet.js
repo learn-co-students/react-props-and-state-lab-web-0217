@@ -3,6 +3,7 @@ const React = require('react');
 class Pet extends React.Component {
   constructor() {
     super();
+    this.handleAdopt = this.handleAdopt.bind(this)
   }
 
   genderIcon(){
@@ -13,11 +14,15 @@ class Pet extends React.Component {
     }
   }
 
+  handleAdopt() {
+    this.props.onAdoptPet(this.props.pet.id)
+  }
+
   adoptionButton() {
-    if(this.props.isAdopted) {
+    if (this.props.isAdopted) {
       return <button className="ui disabled button">Already adopted</button>
     } else {
-      return <button className="ui primary button">Adopt pet</button>
+      return <button onClick={this.handleAdopt} className="ui primary button">Adopt pet</button>
     }
   }
 
@@ -36,7 +41,7 @@ class Pet extends React.Component {
           </div>
         </div>
         <div className="extra content">
-          {this.adoptionButton}
+          {this.adoptionButton()}
         </div>
       </div>
     );
