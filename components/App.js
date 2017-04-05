@@ -36,7 +36,10 @@ class App extends React.Component {
       resp = fetch(`/api/pets?type=${this.state.filters.type}`)
       }
       resp.then((pets) => {
-        return pets.json()
+        let renderedPets = pets.json()
+        this.setState({
+          pets: [renderedPets]
+        })
       })
     }
 
@@ -58,7 +61,7 @@ class App extends React.Component {
               <Filters onFindPetsClick={this.onFindPets} onChangeType={this.onFilterChange} />
             </div>
             <div className="twelve wide column">
-              <PetBrowser onAdoptPet={this.onAdoptPet}/>
+              <PetBrowser onAdoptPet={this.onAdoptPet} />
             </div>
           </div>
         </div>
