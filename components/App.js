@@ -27,21 +27,25 @@ class App extends React.Component {
     })
   }
 
-  onFindPets(type) {
-    let resp
-
+  onFindPets() {
     if (this.state.filters.type === "all") {
-      resp = fetch("/api/pets")
-      } else {
-      resp = fetch(`/api/pets?type=${this.state.filters.type}`)
-      }
-      resp.then((pets) => {
-        let renderedPets = pets.json()
+      fetch('/api/pets')
+      .then(res => res.json())
+      .then(json => {
         this.setState({
-          pets: [renderedPets]
+          pets: json
+        })
+      })
+    } else {
+      fetch('/api/pets?type=' + this.state.filters.type)
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          pets: json
         })
       })
     }
+  }
 
   onAdoptPet(id) {
     this.setState({
