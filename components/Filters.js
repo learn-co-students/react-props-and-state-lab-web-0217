@@ -7,6 +7,7 @@ class Filters extends React.Component {
       currentFilter: props.filters.type
     }
     this.handleFilterChange = this.handleFilterChange.bind(this)
+    this.handleFindPet = this.handleFindPet.bind(this)
   }
 
   handleFilterChange(e) {
@@ -18,7 +19,7 @@ class Filters extends React.Component {
   }
 
   handleFindPet() {
-    this.props.onFindPetsClick(this.state.current)
+    this.props.onFindPetsClick()
   }
 
   render() {
@@ -26,7 +27,7 @@ class Filters extends React.Component {
       <div className="ui form">
         <h3>Animal type</h3>
         <div className="field">
-          <select name="type" id="type" onChange={this.handleFilterChange} defaultValue={this.state.currentFilter}>
+          <select name="type" id="type" onChange={this.handleFilterChange} value={this.state.currentFilter}>
             <option value="all">All</option>
             <option value="cat">Cats</option>
             <option value="dog">Dogs</option>
