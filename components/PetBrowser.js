@@ -4,15 +4,11 @@ const Pet = require('./Pet');
 
 class PetBrowser extends React.Component {
 
-  hasBeenAdopted(pet) {
-    return this.props.adoptedPets.includes(pet.id)
-  }
-
   render() {
     return (
       <div className="ui cards">
-        {this.props.pets.map((pet) => {
-          return <Pet pet={pet} onAdoptPet={this.props.onAdoptPet} isAdopted={this.hasBeenAdopted(pet)}/>
+        {this.props.pets.map((pet, index) => {
+          return <Pet pet={pet} key={index} onAdoptPet={this.props.onAdoptPet} isAdopted={this.props.adoptedPets.includes(pet.id)}/>
         })}
       </div>
     );
