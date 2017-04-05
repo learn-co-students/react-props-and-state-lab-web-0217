@@ -2,10 +2,11 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 require('./fetch-setup');
 
-const App = require('./components/App');
+// const App = require('./components/App');
+const Pet = require('./components/Pet');
 
 ReactDOM.render(
-  <App />,
+  <Pet pet={MALE_DOG} />,
   document.getElementById('main')
 );
 
