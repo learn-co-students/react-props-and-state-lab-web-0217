@@ -16,9 +16,9 @@ class Pet extends React.Component {
     return (
       <div className="card">
         <div className="content">
-          <a className="header">Pet {this.props.pet.name} {this.props.pet.gender==="male" ? "♂" : "♀"}</a>
+          <a className="header">Pet: {this.props.pet.name} {this.props.pet.gender==="male" ? "♂" : "♀"}</a>
           <div className="meta">
-            <span className="date">Pet type{this.props.pet.type}</span>
+            <span className="date">Pet type: {this.props.pet.type}</span>
           </div>
           <div className="description">
             <p>Age: {this.props.pet.age}</p>
@@ -26,7 +26,7 @@ class Pet extends React.Component {
           </div>
         </div>
         <div className="extra content">
-        {!this.props.isAdopted ? <button className="ui primary button" onClick={this.handleClick}>Adopt pet</button> : <button className="ui disabled button">Already adopted</button>}
+        {!this.props.isAdopted ? <button className="ui primary button" onClick={this.handleClick}>Adopt pet</button> : <button className="ui disabled button" disabled>Already adopted</button>}
         </div>
       </div>
     );
