@@ -36,7 +36,7 @@ There are several components that need your attention. All of these components c
     2. If the `type` is `'all'`, send a request to `/api/pets`.
     3. If the `type` is `'cat'`, send a request to `/api/pets?type=cat`. Do the same thing for `dog` and `micropig`.
     4. Finally, set the pet data on the state property `pets` to properly pass them to the `<PetBrowser />` component.
-4. When the `<PetBrowser />` component calls the `onAdoptPet` prop you pass into it, add the pet ID to the the `adoptedPets` array in the state.
+4. When the `<PetBrowser />` component calls the `onAdoptPet` prop you pass into it, add the pet ID to the `adoptedPets` array in the state.
 
 **Even though we're using `fetch` here, its responses have been mocked in order to make the tests work properly. That means it's important to use the _exact_ URLs as described above, or your tests will fail!**
 
